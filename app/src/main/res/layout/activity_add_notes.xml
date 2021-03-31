@@ -41,6 +41,7 @@
         android:layout_marginBottom="88dp"
         android:background="@drawable/bublue_color"
         android:text="@string/add"
+        android:onClick="buAdd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
