@@ -23,6 +23,8 @@ It has the following features.
 4. The added notes will be saved in your database, so you need not to worry when you close your application.
 
 
+This application also supports Hindi language.
+
 
 ## Preview
 These are the sample images of the application.
