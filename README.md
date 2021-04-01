@@ -28,10 +28,17 @@ This application also supports Hindi language.
 
 ## Preview
 These are the sample images of the application.
+1. This is the app. ![Screenshot_2021-04-01-14-25-56-00_2f464edcd3627665200034716c80de26_LI](https://user-images.githubusercontent.com/44547947/113285304-6fd23280-9308-11eb-9335-2705f0e74668.jpg)
 
+2. The splash screen ![IMG_20210401_162917](https://user-images.githubusercontent.com/44547947/113285471-a314c180-9308-11eb-92f2-d0e2ea027b7e.jpg)
 
+3. Adding the note ![Screenshot_2021-04-01-16-23-37-22_e135f6f057ae6b59c7d93a415eb432a7](https://user-images.githubusercontent.com/44547947/113285625-d1929c80-9308-11eb-8677-70d95172eec0.jpg)
 
+4. Notes layout ![Screenshot_2021-04-01-16-28-10-12_e135f6f057ae6b59c7d93a415eb432a7](https://user-images.githubusercontent.com/44547947/113285697-e111e580-9308-11eb-95cf-1004123de3f9.jpg)
 
+5. Searching in Title ![Screenshot_2021-04-01-16-28-21-22_e135f6f057ae6b59c7d93a415eb432a7](https://user-images.githubusercontent.com/44547947/113285743-ee2ed480-9308-11eb-834e-acaef202a212.jpg)
+
+6. After deletion of a note ![Screenshot_2021-04-01-16-28-47-15_e135f6f057ae6b59c7d93a415eb432a7](https://user-images.githubusercontent.com/44547947/113285782-fbe45a00-9308-11eb-8ec7-8144ff4dda7d.jpg)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
