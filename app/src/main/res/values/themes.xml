@@ -14,4 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="android:navigationBarColor">@color/customeblue</item>
     </style>
+
+    <style name="SplashScreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splashscreen</item>
+    </style>
 </resources>

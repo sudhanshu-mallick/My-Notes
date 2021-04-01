@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="@drawable/gradient_background"
     tools:context=".AddNotes">
 
     <EditText
@@ -39,9 +41,9 @@
         android:layout_height="30pt"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="88dp"
-        android:background="@drawable/bublue_color"
-        android:text="@string/add"
+        android:background="@color/orange"
         android:onClick="buAdd"
+        android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

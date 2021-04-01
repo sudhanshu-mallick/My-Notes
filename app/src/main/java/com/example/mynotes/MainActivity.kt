@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 dbManager.Delete("ID=?", selectionArgs)
                 LoadQuery("%")
             }
-            myView.ivEdit.setOnClickListener{
+            myView.ivEdit.setOnClickListener {
 
                 GoToUpdate(mynote)
 
