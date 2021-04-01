@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ticket.view.*
 
 class MainActivity : AppCompatActivity() {
-
     var listNotes = ArrayList<Note>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         listNotes.clear()
 
         if (cursor.moveToFirst()) {
-
             do {
                 val ID = cursor.getInt(cursor.getColumnIndex("ID"))
                 val Title = cursor.getString(cursor.getColumnIndex("Title"))
@@ -56,8 +54,6 @@ class MainActivity : AppCompatActivity() {
 
         var myNotesAdapter = MyNotesAdpater(this, listNotes)
         lvNotes.adapter = myNotesAdapter
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -67,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         val sm = getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
         sv.setSearchableInfo(sm.getSearchableInfo(componentName))
+
         sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 Toast.makeText(applicationContext, query, Toast.LENGTH_LONG).show()
@@ -89,6 +86,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
         return super.onOptionsItemSelected(item)
     }
 
@@ -114,7 +112,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
             var myView = layoutInflater.inflate(R.layout.ticket, null)
             var mynote = listNotesAdpater[position]
             myView.tvTitle.text = mynote.noteName
@@ -123,13 +120,13 @@ class MainActivity : AppCompatActivity() {
             myView.ivDelete.setOnClickListener {
                 var dbManager = DbManager(this.context!!)
                 val selectionArgs = arrayOf(mynote.noteID.toString())
+
                 dbManager.Delete("ID=?", selectionArgs)
                 LoadQuery("%")
             }
+
             myView.ivEdit.setOnClickListener {
-
                 GoToUpdate(mynote)
-
             }
 
             return myView
@@ -138,6 +135,7 @@ class MainActivity : AppCompatActivity() {
 
     fun GoToUpdate(note: Note) {
         var intent = Intent(this, AddNotes::class.java)
+
         intent.putExtra("ID", note.noteID)
         intent.putExtra("name", note.noteName)
         intent.putExtra("des", note.noteDes)
