@@ -29,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         LoadQuery("%")
     }
 
+    override fun onResume() {
+        super.onResume()
+        LoadQuery("%")
+    }
+
     fun LoadQuery(title: String) {
         var dbManager = DbManager(this)
         val projections = arrayOf("ID", "Title", "Description")
@@ -121,13 +126,21 @@ class MainActivity : AppCompatActivity() {
                 dbManager.Delete("ID=?", selectionArgs)
                 LoadQuery("%")
             }
-//            myView.ivEdit.setOnClickListener {
-//
-//                GoToUpdate(myNote)
-//
-//            }
+            myView.ivEdit.setOnClickListener{
+
+                GoToUpdate(mynote)
+
+            }
 
             return myView
         }
+    }
+
+    fun GoToUpdate(note: Note) {
+        var intent = Intent(this, AddNotes::class.java)
+        intent.putExtra("ID", note.noteID)
+        intent.putExtra("name", note.noteName)
+        intent.putExtra("des", note.noteDes)
+        startActivity(intent)
     }
 }

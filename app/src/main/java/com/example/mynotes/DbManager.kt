@@ -75,10 +75,10 @@ class DbManager {
         return count
     }
 
-//    fun Update(values: ContentValues, selection: String, selectionargs: Array<String>): Int {
-//
-//        val count = sqlDB!!.update(dbTable, values, selection, selectionargs)
-//        return count
-//    }
+    fun Update(values: ContentValues, selection: String, selectionargs: Array<String>): Int {
+
+        val count = sqlDB!!.update(dbTable, values, selection, selectionargs)
+        return count
+    }
 
 }
