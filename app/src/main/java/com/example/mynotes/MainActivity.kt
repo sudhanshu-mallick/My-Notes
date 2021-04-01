@@ -23,52 +23,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Add dummy data
-        listNotes.add(
-            Note(
-                1,
-                " meet professor",
-                "Create any pattern of your own - tiles, texture, skin, wallpaper, comic effect, website background and more.  Change any artwork of pattern you found into different flavors and call them your own."
-            )
-        )
-        listNotes.add(
-            Note(
-                2,
-                " meet doctor",
-                "Create any pattern of your own - tiles, texture, skin, wallpaper, comic effect, website background and more.  Change any artwork of pattern you found into different flavors and call them your own."
-            )
-        )
-        listNotes.add(
-            Note(
-                3,
-                " meet friend",
-                "Create any pattern of your own - tiles, texture, skin, wallpaper, comic effect, website background and more.  Change any artwork of pattern you found into different flavors and call them your own."
-            )
-        )
-        listNotes.add(
-            Note(
-                1,
-                " meet professor",
-                "Create any pattern of your own - tiles, texture, skin, wallpaper, comic effect, website background and more.  Change any artwork of pattern you found into different flavors and call them your own."
-            )
-        )
-        listNotes.add(
-            Note(
-                2,
-                " meet doctor",
-                "Create any pattern of your own - tiles, texture, skin, wallpaper, comic effect, website background and more.  Change any artwork of pattern you found into different flavors and call them your own."
-            )
-        )
-        listNotes.add(
-            Note(
-                3,
-                " meet friend",
-                "Create any pattern of your own - tiles, texture, skin, wallpaper, comic effect, website background and more.  Change any artwork of pattern you found into different flavors and call them your own."
-            )
-        )
+        var myNotesAdapter = MyNotesAdpater(listNotes)
+        lvNotes.adapter = myNotesAdapter
+
+        LoadQuery("%")
+    }
+
+    fun LoadQuery(title: String) {
+        var dbManager = DbManager(this)
+        val projections = arrayOf("ID", "Title", "Description")
+        val selectionArgs = arrayOf(title)
+        val cursor = dbManager.Query(projections, "Title like ?", selectionArgs, "Title")
+
+        listNotes.clear()
+
+        if (cursor.moveToFirst()) {
+
+            do {
+                val ID = cursor.getInt(cursor.getColumnIndex("ID"))
+                val Title = cursor.getString(cursor.getColumnIndex("Title"))
+                val Description = cursor.getString(cursor.getColumnIndex("Description"))
+
+                listNotes.add(Note(ID, Title, Description))
+
+            } while (cursor.moveToNext())
+        }
 
         var myNotesAdapter = MyNotesAdpater(listNotes)
         lvNotes.adapter = myNotesAdapter
+
 
     }
 
@@ -82,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 Toast.makeText(applicationContext, query, Toast.LENGTH_LONG).show()
+                LoadQuery("%$query%")
                 return false
             }
 
