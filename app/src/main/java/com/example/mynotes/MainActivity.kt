@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var myNotesAdapter = MyNotesAdpater(listNotes)
+        var myNotesAdapter = MyNotesAdpater(this, listNotes)
         lvNotes.adapter = myNotesAdapter
 
         LoadQuery("%")
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             } while (cursor.moveToNext())
         }
 
-        var myNotesAdapter = MyNotesAdpater(listNotes)
+        var myNotesAdapter = MyNotesAdpater(this, listNotes)
         lvNotes.adapter = myNotesAdapter
 
 
@@ -89,9 +89,11 @@ class MainActivity : AppCompatActivity() {
 
     inner class MyNotesAdpater : BaseAdapter {
         var listNotesAdpater = ArrayList<Note>()
+        var context: Context? = null
 
-        constructor(listNotesAdpater: ArrayList<Note>) : super() {
+        constructor(context: Context, listNotesAdpater: ArrayList<Note>) : super() {
             this.listNotesAdpater = listNotesAdpater
+            this.context = context
         }
 
         override fun getCount(): Int {
@@ -112,6 +114,18 @@ class MainActivity : AppCompatActivity() {
             var mynote = listNotesAdpater[position]
             myView.tvTitle.text = mynote.noteName
             myView.tvDes.text = mynote.noteDes
+
+            myView.ivDelete.setOnClickListener {
+                var dbManager = DbManager(this.context!!)
+                val selectionArgs = arrayOf(mynote.noteID.toString())
+                dbManager.Delete("ID=?", selectionArgs)
+                LoadQuery("%")
+            }
+//            myView.ivEdit.setOnClickListener {
+//
+//                GoToUpdate(myNote)
+//
+//            }
 
             return myView
         }
